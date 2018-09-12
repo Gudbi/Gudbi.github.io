@@ -1,30 +1,37 @@
 body{
-	background: #FFFFFF; 
-	font-family: 'Hi Melody', cursive;
+	background: #FFFFFF; 	
 }
 
 #content{
- height: 100vh;
+ height: 80vh;
  width: 100%;
- //display: flex;
- //align-items: center;
- //justify-content: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
  padding-top: 50px;
 }
 
 .icons{
-	width: 200px;
+	width: 125px;
 	margin: 0 auto;
 }
 
 h1{
+	font-family: 'Hi Melody', cursive;
 	text-align: center;
 	color:#60A6CA;
 	font-size: 2.5em;
 }
 
+h4{
+	font-family: 'Hi Melody';
+	font-weight: bold;
+	text-align: center;
+	color: rgb(19, 87, 121);
+}
+
 .logo{
-	width: 50%;
+	width: 40%;
 	margin: 0 auto;
 }
 
@@ -35,8 +42,8 @@ h1{
 .fa {
 	padding: 20px;
 	font-size: 30px;
-	width: 20px;
-	height: 20px;
+	width: 60px;
+	height: 60px;
 	text-align: center;
 	text-decoration: none;
 	border-radius: 50%;
@@ -50,4 +57,9 @@ h1{
 .fa-twitter {
   background: #60A6CA;
   color: white;
+}
+
+a:hover{
+	color: white;
+	text-decoration:none;
 }

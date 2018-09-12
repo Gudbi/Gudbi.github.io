@@ -1,20 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
- 	<link href="css/principal.css" rel="stylesheet">
- 	<link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet"> 
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
+ <head> 	
+ 	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet"> 
+	 <link href="css/principal.css" rel="stylesheet"> 	
+</head>
  <body>
- 	<section id="content">  
-	 	<div class="logo">
-	 		<img  src="images/gudbi.png" alt="gudbi">
-	 	</div>
-	 	<h1>Espera pronto grandes sopresas</h1> 
+ 	<section id="content">
+		 <div class="container-fluid">
+		 <div class="row" style="margin-bottom: 40px;">  
+	 		<div class="logo">
+				<img  src="images/gudbi.png" alt="gudbi">
+			</div>
+		</div>	 		
+		<h1>Espera pronto grandes sopresas</h1> 
 	 	<div class="icons">	
 		 	<a href="https://www.facebook.com/Gudbi/" class="fa fa-facebook"></a>
 		 	<a href="https://twitter.com/GudbiCare" class="fa fa-twitter"></a>
-	 	</div>
- 	</section>	
+		 </div>
+		</div>
+	 </section>	
+	 <section id="contact">
+		 <div class="container-fluid">
+			 <div style="padding: 60px 0;">
+				<h4>¿Quieres conocer mas sobre nosotros?</h4>
+				<h4>Llena el siguiente formulario y te estaremos enviando información pronto.</h4>
+			</div>
+		<div id="app" style="width: 100%;">
+			<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+				<div class="col-md-3"><label>Nombre:</label></div>
+				<div class="col-md-9"><input class="form-control" type="text" v-model="from_name"></div>
+				</div>
+			</div>			
+			<div class="col-md-6">
+				<div class="row">
+				<div class="col-md-2"><label>Correo:</label></div>
+				<div class="col-md-10"><input class="form-control" type="email" v-model="from_email"></div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<label>
+					Mensaje:
+				</label>
+				<textarea class="form-control" v-model="message">
+				</textarea>
+			</div>
+			<div class="col-md-12 text-center" style="margin-top:30px; margin-bottom: 100px;">
+				<button @click="enviar" class="btn btn-success">
+					Enviar
+				</button>
+			</div>
+		</div>
+		</div>
+	</div>
+	 </section>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
+	 </script>
+	 <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
+	 </script>
+	 <script>
+		 (function(){
+			 emailjs.init("user_54mB8PSPYHpX5FiOkcZOs");
+		  })();
+		 const vue = new Vue({
+			 el: '#app',
+			 data(){
+				 return {
+					 from_name: '',
+					 from_email: '',
+					 message: '',
+					 subject: '',
+				 }
+			 },
+			 methods: {
+				 enviar(){
+					 let data = {
+						 from_name: this.from_name,
+						 from_email: this.from_email,
+						 message: this.message,
+						 subject: " [Page Message] Quiero conocer de Gudbi",
+					 };
+					 
+					 emailjs.send("gmail","contact_gudbi", data)
+					 .then(function(response) {
+						 if(response.text === 'OK'){
+							 this.from_email=" ";
+							 this.from_name=" ";
+							 this.message=" ";
+							 alert('El correo se ha enviado de forma exitosa');
+						 }
+						console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+					 }, function(err) {
+						 alert('Ocurrió un problema al enviar el correo');
+						console.log("FAILED. error=", err);
+					 });
+				 }
+			 }
+		 });
+	 </script>
  </body>
 </html>
