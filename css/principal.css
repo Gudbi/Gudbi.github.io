@@ -63,3 +63,13 @@ a:hover{
 	color: white;
 	text-decoration:none;
 }
+
+.btn{
+	background: rgb(19, 87, 121);
+	color: white;
+}
+
+.contact_div{
+	width: 1000px;
+	margin: 0 auto;
+}

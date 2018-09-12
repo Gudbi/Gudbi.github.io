@@ -22,39 +22,39 @@
 		</div>
 	 </section>	
 	 <section id="contact">
-		 <div class="container-fluid">
+		 <div class="container-fluid contact_div">
 			 <div style="padding: 60px 0;">
 				<h4>¿Quieres conocer mas sobre nosotros?</h4>
 				<h4>Llena el siguiente formulario y te estaremos enviando información pronto.</h4>
 			</div>
-		<div id="app" style="width: 100%;">
+		<form id="form" @submit.prevent="formSubmit" style="width: 100%;">
 			<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 form__line">
 				<div class="row">
 				<div class="col-md-3"><label>Nombre:</label></div>
-				<div class="col-md-9"><input class="form-control" type="text" v-model="from_name"></div>
+				<div class="col-md-9"><input class="form-control" type="text" v-model="from_name" model="from_name"></div>
 				</div>
 			</div>			
-			<div class="col-md-6">
+			<div class="col-md-6 form__line">
 				<div class="row">
 				<div class="col-md-2"><label>Correo:</label></div>
-				<div class="col-md-10"><input class="form-control" type="email" v-model="from_email"></div>
+				<div class="col-md-10"><input class="form-control" type="email" v-model="from_email" model="from_email"></div>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-12 form__line">
 				<label>
 					Mensaje:
 				</label>
 				<textarea class="form-control" v-model="message">
 				</textarea>
 			</div>
-			<div class="col-md-12 text-center" style="margin-top:30px; margin-bottom: 100px;">
-				<button @click="enviar" class="btn btn-success">
+			<div class="col-md-12 text-center form__line" style="margin-top:30px; margin-bottom: 100px;">
+				<button class="btn">
 					Enviar
 				</button>
 			</div>
 		</div>
-		</div>
+		</form>
 	</div>
 	 </section>
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
@@ -66,7 +66,7 @@
 			 emailjs.init("user_54mB8PSPYHpX5FiOkcZOs");
 		  })();
 		 const vue = new Vue({
-			 el: '#app',
+			 el: '#form',
 			 data(){
 				 return {
 					 from_name: '',
@@ -76,7 +76,7 @@
 				 }
 			 },
 			 methods: {
-				 enviar(){
+				formSubmit: function(event){
 					 let data = {
 						 from_name: this.from_name,
 						 from_email: this.from_email,
@@ -87,10 +87,9 @@
 					 emailjs.send("gmail","contact_gudbi", data)
 					 .then(function(response) {
 						 if(response.text === 'OK'){
-							 this.from_email=" ";
-							 this.from_name=" ";
-							 this.message=" ";
-							 alert('El correo se ha enviado de forma exitosa');
+							alert('El correo se ha enviado de forma exitosa');
+							this.from_email = this.from_name = this.message='';
+							event.target.reset();
 						 }
 						console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
 					 }, function(err) {
