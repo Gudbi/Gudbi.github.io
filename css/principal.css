@@ -1,14 +1,46 @@
 body{
 	background: #FFFFFF; 	
+	/*font-family: 'Pacifico', cursive;*/
+	font-family: 'Courgette', cursive;
 }
 
 #content{
- height: 80vh;
+ height: 100vh;
  width: 100%;
  display: flex;
  align-items: center;
  justify-content: center;
- padding-top: 50px;
+ padding-top: 20px;
+}
+
+#information{
+	background: #60A6CA;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 50px;
+
+
+}
+
+.center-full{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+a{
+	color:#60A6CA;
+	text-decoration:none;
+	text-align: center;
+}
+
+a:hover{
+	color: rgb(6, 60, 87);
+	text-decoration:none;
 }
 
 .icons{
@@ -17,17 +49,24 @@ body{
 }
 
 h1{
-	font-family: 'Hi Melody', cursive;
 	text-align: center;
 	color:#60A6CA;
 	font-size: 2.5em;
 }
 
-h4{
-	font-family: 'Hi Melody';
-	font-weight: bold;
+h2{
 	text-align: center;
-	color: rgb(19, 87, 121);
+	color:white;
+	font-size: 2em;
+}
+
+h3{
+	text-align: center;
+}
+
+h4{
+	text-align: center;
+	color: #60A6CA;
 }
 
 .logo{
@@ -59,17 +98,26 @@ h4{
   color: white;
 }
 
-a:hover{
-	color: white;
-	text-decoration:none;
+
+label{
+	color:#60A6CA;
 }
 
 .btn{
-	background: rgb(19, 87, 121);
+	background: #60A6CA;
 	color: white;
 }
 
 .contact_div{
 	width: 1000px;
-	margin: 0 auto;
+	margin: 0 auto;	
+}
+
+.center{
+	text-align: center;
+}
+
+video{
+	width: 100%;
+	height: auto;
 }
