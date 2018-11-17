@@ -108,8 +108,9 @@ label{
 	color: white;
 }
 
-.contact_div{
-	width: 1000px;
+.contact_div{		
+	width: 100%;
+	max-width: 1000px;
 	margin: 0 auto;	
 }
 
